@@ -5,53 +5,6 @@ namespace eft_dma_radar
 {
     public class Config
     {
-        // New properties for WEb+Aimbot
-        [JsonPropertyName("aimbotFOV")]
-        public int AimbotFOV { get; set; }
-
-        [JsonPropertyName("aimbotMaxDistance")]
-        public int AimbotMaxDistance { get; set; }
-
-        [JsonPropertyName("aimbotKeybind")]
-        public int AimbotKeybind { get; set; }
-
-        [JsonPropertyName("aimbotSmoothness")]
-        public int AimbotSmoothness { get; set; }
-
-        [JsonPropertyName("aimbotHead")]
-        public bool AimbotHead { get; set; }
-
-        [JsonPropertyName("aimbotNeck")]
-        public bool AimbotNeck { get; set; }
-
-        [JsonPropertyName("aimbotChest")]
-        public bool AimbotChest { get; set; }
-
-        [JsonPropertyName("aimbotPelvis")]
-        public bool AimbotPelvis { get; set; }
-
-        [JsonPropertyName("aimbotRightLeg")]
-        public bool AimbotRightLeg { get; set; }
-
-        [JsonPropertyName("aimbotLeftLeg")]
-        public bool AimbotLeftLeg { get; set; }
-
-        [JsonPropertyName("enableAimbot")]
-        public bool EnableAimbot { get; set; }
-
-        [JsonPropertyName("aimbotClosest")]
-        public bool AimbotClosest { get; set; }
-
-        [JsonPropertyName("enablePMC")]
-        public bool EnablePMC { get; set; }
-
-        [JsonPropertyName("enableTargetScavs")]
-        public bool EnableTargetScavs { get; set; } 
-
-        [JsonPropertyName("hostname")]
-        public string Hostname { get; set; }   
-
-       // New properties for Aimbot END        
         #region Json Properties
         [JsonPropertyName("aimview")]
         public bool Aimview { get; set; }
@@ -80,6 +33,9 @@ namespace eft_dma_radar
         [JsonPropertyName("extendedReachDistancePvE")]
         public float ExtendedReachDistancePvE { get; set; }
 
+        [JsonPropertyName("fov")]
+        public int FOV { get; set; }
+
         [JsonPropertyName("freezeTimeOfDay")]
         public bool FreezeTimeOfDay { get; set; }
 
@@ -88,6 +44,9 @@ namespace eft_dma_radar
 
         [JsonPropertyName("globalFontSize")]
         public int GlobalFontSize { get; set; }
+
+        [JsonPropertyName("hotkeys")]
+        public List<Hotkey> Hotkeys { get; set; }
 
         [JsonPropertyName("hoverArmor")]
         public bool HoverArmor { get; set; }
@@ -101,11 +60,20 @@ namespace eft_dma_radar
         [JsonPropertyName("instantADS")]
         public bool InstantADS { get; set; }
 
+        [JsonPropertyName("inventoryBlur")]
+        public bool InventoryBlur { get; set; }
+
+        [JsonPropertyName("juggernaut")]
+        public bool Juggernaut { get; set; }
+
         [JsonPropertyName("logging")]
         public bool Logging { get; set; }
 
         [JsonPropertyName("looseLoot")]
         public bool LooseLoot { get; set; }
+
+        [JsonPropertyName("lootContainerDistance")]
+        public int LootContainerDistance { get; set; }
 
         [JsonPropertyName("lootContainerSettings")]
         public Dictionary<string, bool> LootContainerSettings { get; set; }
@@ -152,6 +120,9 @@ namespace eft_dma_radar
         [JsonPropertyName("maxSkills")]
         public Dictionary<string, bool> MaxSkills { get; set; }
 
+        [JsonPropertyName("medInfoPanel")]
+        public bool MedInfoPanel { get; set; }
+
         [JsonPropertyName("minCorpseValue")]
         public int MinCorpseValue { get; set; }
 
@@ -167,8 +138,11 @@ namespace eft_dma_radar
         [JsonPropertyName("nightVision")]
         public bool NightVision { get; set; }
 
-        [JsonPropertyName("noRecoilSway")]
-        public bool NoRecoilSway { get; set; }
+        [JsonPropertyName("noRecoil")]
+        public bool NoRecoil { get; set; }
+
+        [JsonPropertyName("noSway")]
+        public bool NoSway { get; set; }
 
         [JsonPropertyName("noVisor")]
         public bool NoVisor { get; set; }
@@ -284,6 +258,10 @@ namespace eft_dma_radar
             ["ExfilClosedText"] = new PaintColor.Colors { A = 255, R = 255, G = 255, B = 255 },
             ["ExfilClosedIcon"] = new PaintColor.Colors { A = 255, R = 255, G = 0, B = 0 },
 
+            // Transit
+            ["TransitText"] = new PaintColor.Colors { A = 255, R = 255, G = 255, B = 255 },
+            ["TransitIcon"] = new PaintColor.Colors { A = 255, R = 255, G = 165, B = 0 },
+
             // Loot/Quests
             ["RegularLoot"] = new PaintColor.Colors { A = 255, R = 245, G = 245, B = 245 },
             ["ImportantLoot"] = new PaintColor.Colors { A = 255, R = 64, G = 224, B = 208 },
@@ -292,9 +270,13 @@ namespace eft_dma_radar
             ["RequiredQuestItem"] = new PaintColor.Colors { A = 255, R = 255, G = 0, B = 128 },
             ["LootPing"] = new PaintColor.Colors { A = 255, R = 255, G = 255, B = 0 },
 
+            // Game World
+            ["Grenades"] = new PaintColor.Colors { A = 255, R = 255, G = 69, B = 0 },
+            ["Tripwires"] = new PaintColor.Colors { A = 255, R = 255, G = 69, B = 0 },
+            ["DeathMarker"] = new PaintColor.Colors { A = 255, R = 0, G = 0, B = 0 },
+
             // Other
             ["TextOutline"] = new PaintColor.Colors { A = 255, R = 0, G = 0, B = 0 },
-            ["DeathMarker"] = new PaintColor.Colors { A = 255, R = 0, G = 0, B = 0 },
             ["Chams"] = new PaintColor.Colors { A = 255, R = 255, G = 0, B = 0 },
             ["Primary"] = new PaintColor.Colors { A = 255, R = 80, G = 80, B = 80 },
             ["PrimaryDark"] = new PaintColor.Colors { A = 255, R = 50, G = 50, B = 50 },
@@ -350,6 +332,7 @@ namespace eft_dma_radar
             ["Jacket"] = false,
             ["Lab technician body"] = false,
             ["Medbag SMU06"] = false,
+            ["Medcase"] = false,
             ["Medical supply crate"] = false,
             ["PC block"] = false,
             ["PMC body"] = false,
@@ -397,18 +380,18 @@ namespace eft_dma_radar
         [JsonIgnore]
         public Dictionary<string, PlayerInformationSettings> DefaultPlayerInformationSettings = new Dictionary<string, PlayerInformationSettings>()
         {
-            ["PMC"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["PlayerScav"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["Boss"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["BossGuard"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["BossFollower"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["Raider"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["Rogue"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["Cultist"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["Scav"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["Special"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["Teammate"] = new PlayerInformationSettings(true, true, true, true, 500, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13),
-            ["LocalPlayer"] = new PlayerInformationSettings(true, true, true, true, 500, 255, 0, 13, false, false, false, false, false, false, false, false, false, 0, 13)
+            ["PMC"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["PlayerScav"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["Boss"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["BossGuard"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["BossFollower"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["Raider"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["Rogue"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["Cultist"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["Scav"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["Special"] = new PlayerInformationSettings(true, true, true, true, 15, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["Teammate"] = new PlayerInformationSettings(true, true, true, true, 500, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13),
+            ["LocalPlayer"] = new PlayerInformationSettings(true, true, true, true, 500, 255, 0, 13, false, false, false, false, false, false, false, false, false, false, 0, 13)
         };
 
         [JsonIgnore]
@@ -465,15 +448,20 @@ namespace eft_dma_radar
             ExtendedReach = false;
             ExtendedReachDistance = 2f;
             ExtendedReachDistancePvE = 2f;
+            FOV = 75;
             FreezeTimeOfDay = false;
             GlobalFont = 0;
             GlobalFontSize = 13;
+            Hotkeys = new List<Hotkey>();
             HoverArmor = false;
             ImportantLootOnly = false;
             InfiniteStamina = false;
             InstantADS = false;
+            InventoryBlur = false;
+            Juggernaut = false;
             Logging = false;
             LooseLoot = true;
+            LootContainerDistance = 300;
             LootContainerSettings = DefaultContainerSettings;
             LootCorpses = false;
             LootItemRefresh = false;
@@ -489,12 +477,14 @@ namespace eft_dma_radar
             MasterSwitch = false;
             MaxDistance = 325;
             MaxSkills = DefaultMaxSkillsSettings;
+            MedInfoPanel = false;
             MinCorpseValue = 100000;
             MinImportantLootValue = 300000;
             MinLootValue = 90000;
             MinSubItemValue = 15000;
             NightVision = false;
-            NoRecoilSway = false;
+            NoRecoil = false;
+            NoSway = false;
             NoVisor = false;
             NoWeaponMalfunctions = false;
             OpticThermalSetting = new ThermalSettings(1f, 0.0011f, -0.1f, 0);
@@ -523,22 +513,6 @@ namespace eft_dma_radar
             UnknownQuestItems = false;
             VSync = true;
             ZoomSensitivity = 25;
-            //Web+Aimbot
-            AimbotFOV = 30;
-            AimbotMaxDistance = 200;
-            AimbotKeybind = 0x05; // Example: Mouse button 5
-            AimbotSmoothness = 100;
-            AimbotHead = false;  // Enable aiming at the head
-            AimbotNeck = false; // Disable aiming at the neck
-            AimbotChest = false; // Enable aiming at the chest
-            AimbotPelvis = false; // Disable aiming at the pelvis
-            AimbotRightLeg = false; // Disable aiming at the right leg
-            AimbotLeftLeg = false; // Disable aiming at the left leg
-            EnableAimbot = false; // Enable the aimbot feature
-            AimbotClosest = false;
-            EnablePMC = false; // Enable aiming at PMC targets
-            EnableTargetScavs = false; // Enable aiming at SCAV targets
-            Hostname = "localhost";
         }
 
         /// <summary>
@@ -585,6 +559,25 @@ namespace eft_dma_radar
                 var json = JsonSerializer.Serialize<Config>(config, _jsonOptions);
                 File.WriteAllText($"{SettingsDirectory}Settings.json", json);
             }
+        }
+
+        public bool GetConfigValue(string actionName)
+        {
+            return actionName switch
+            {
+                "Chams" => this.Chams["Enabled"],
+                "Important Loot" => this.ImportantLootOnly,
+                "No Recoil" => this.NoRecoil,
+                "No Sway" => this.NoSway,
+                "Optical Thermal" => this.OpticThermalVision,
+                "Show Containers" => this.LootContainerSettings["Enabled"],
+                "Show Corpses" => this.LootCorpses,
+                "Show Loot" => this.LooseLoot,
+                "Thirdperson" => this.Thirdperson,
+                "Thermal Vision" => this.ThermalVision,
+                "Timescale" => this.TimeScale,
+                _ => false
+            };
         }
     }
 }
